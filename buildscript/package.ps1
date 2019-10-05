@@ -24,9 +24,10 @@ Write-Host "Checking .NET Core version" -ForegroundColor Green
 Write-Host "Restoring project" -ForegroundColor Green
 & dotnet restore --source "http://servicelab.tk:5555/v3/index.json" --source "https://api.nuget.org/v3/index.json"
 
-# Build the project
-Write-Host "Build project, create post-build NuGet" -ForegroundColor Green
-& dotnet build $projectFile --configuration Release	--no-restore
+# Publish the project
+Write-Host "Publish the project" -ForegroundColor Green
+& dotnet publish --configuration Release
+
 
 # Compress artifact
 $pathToCompress = $projectDir+"\bin\Release\*";
