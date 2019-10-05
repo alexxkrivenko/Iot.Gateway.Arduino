@@ -26,7 +26,7 @@ Write-Host "Restoring project" -ForegroundColor Green
 
 # Publish the project
 Write-Host "Publish the project" -ForegroundColor Green
-& dotnet publish --configuration Release  --self-contained true
+& dotnet publish --configuration Release -r linux-x64 --self-contained true
 
 
 # Compress artifact
