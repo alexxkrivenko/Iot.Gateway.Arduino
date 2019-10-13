@@ -1,5 +1,5 @@
 FROM mcr.microsoft.com/dotnet/core/runtime:2.2
-COPY --from=publish /app
+COPY /bin/Release/netcoreapp2.2/linux-x64/publish/ /app
   
 EXPOSE 80
 EXPOSE 443
