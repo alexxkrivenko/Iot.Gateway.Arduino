@@ -44,7 +44,10 @@
     <None Update="appveyor.yml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="buildscript\package.ps1">
+    <None Update="scripts\deploy.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="scripts\build.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="C:\Users\as.krivenko\.nuget\packages\nlog.config\4.6.1\contentFiles\any\any\NLog.config">

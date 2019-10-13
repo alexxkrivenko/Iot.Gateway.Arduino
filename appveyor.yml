@@ -1,5 +1,7 @@
 version: 1.0.{build}
 image: Visual Studio 2017
+install:
+  - docker version
 branches:
   only:
   - master
@@ -7,4 +9,7 @@ init:
   # Good practice, because Windows line endings are different from Unix/Linux ones
   - cmd: git config --global core.autocrlf true
 build_script:
-  - ps: ./buildscript/package.ps1
+  - ps: ./scripts/build.ps1
+
+deploy_script:
+- ps: ./scripts/deploy.ps1
