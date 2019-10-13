@@ -5,6 +5,7 @@ $projectDir = $buildDir + "\";
 
 
 # Build docker image
+Switch-DockerLinux
 Write-Host "Build docker image" -ForegroundColor Green
 docker build -t $env:DOCKER_USER/$env:DOCKER_IMAGE_NAME -f Dockerfile .
 
