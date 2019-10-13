@@ -4,6 +4,6 @@ WORKDIR /app
 
 EXPOSE 80
 EXPOSE 443
-EXPOSE 6222
-EXPOSE 8222
+EXPOSE 4222
 
+ENTRYPOINT ["dotnet", "Iot.Gateway.Arduino.dll"]
