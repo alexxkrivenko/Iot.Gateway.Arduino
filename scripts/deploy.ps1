@@ -7,7 +7,7 @@ $projectDir = $buildDir + "\";
 # Build docker image
 Switch-DockerLinux
 Write-Host "Build docker image" -ForegroundColor Green
-docker build -t $env:DOCKER_USER/$env:DOCKER_IMAGE_NAME -f Dockerfile .
+docker build -t $env:DOCKER_USER/$env:DOCKER_IMAGE_NAME -f Dockerfile --build-arg acrh=amd64 .
 
 # Push docker image
 Write-Host "Push docker image" -ForegroundColor Green
