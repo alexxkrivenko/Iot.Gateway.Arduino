@@ -1,9 +1,6 @@
 ﻿# https://www.appveyor.com/docs/environment-variables/
 
 # Script static variables
-$dockerImageName = 
-$dockerPass = $env:DOCKER_PASS
-
 $projectDir = $buildDir + "\";
 
 

@@ -1,5 +1,12 @@
 version: 1.0.{build}
 image: Visual Studio 2019
+
+environment:
+  DOCKER_USER:
+    secure: g0VcUYBY30ilmqGg1+krXA==
+  DOCKER_PASS:
+    secure: nHuQ0wt6IoY2uBNILS0juA==
+
 install:
   - docker version
 branches:
