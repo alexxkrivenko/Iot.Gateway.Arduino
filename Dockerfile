@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/core/runtime:2.2
+FROM microsoft/aspnetcore-build:2.0
 COPY /bin/Release/netcoreapp2.2/linux-x64/publish/ /app
 WORKDIR /app
 
