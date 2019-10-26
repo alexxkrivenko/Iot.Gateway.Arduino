@@ -59,7 +59,7 @@ namespace Iot.Gateway.Arduino
 					InvalidOperationException("Соединение с брокером Mqtt не установлено. Сервис не может быть запущен.");
 			}
 
-			_logger.Info("Соединение с брокером Mqtt установлено.");
+			_logger.Trace("Соединение с брокером Mqtt установлено.");
 
 			_mqttClient.UseApplicationMessageReceivedHandler(Handler);
 
@@ -96,7 +96,7 @@ namespace Iot.Gateway.Arduino
 			foreach (var parameter in subcribeParameters)
 			{
 				await _mqttClient.SubscribeAsync(parameter);
-				_logger.Info($"Выполнена подписка на топик: {parameter}");
+				_logger.Trace($"Выполнена подписка на топик: {parameter}");
 			}
 
 		}
