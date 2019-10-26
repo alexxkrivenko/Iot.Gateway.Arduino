@@ -1,4 +1,4 @@
-FROM microsoft/aspnetcore-build:2.2
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build-env
 COPY /bin/Release/netcoreapp2.2/linux-x64/publish/ /app
 WORKDIR /app
 
