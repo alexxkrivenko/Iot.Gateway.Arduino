@@ -33,12 +33,12 @@ namespace Iot.Gateway.Arduino.MessageDispatcher
 		#region IMessageDisaptcher members
 		public async Task Dispatch(MqttApplicationMessageReceivedEventArgs arg)
 		{
-			_logger.Trace("Сообщение от устройства получено.");
+			_logger.Info("Сообщение от устройства получено.");
 
 			if (TryParseEvent(arg, out var @event))
 			{
 				Publish(@event);
-				_logger.Trace($"Сообщение {@event.EventDateTime}:{@event.EventId} опубликовано.");
+				_logger.Info($"Сообщение {@event.EventDateTime}:{@event.EventId} опубликовано.");
 				return;
 			}
 
