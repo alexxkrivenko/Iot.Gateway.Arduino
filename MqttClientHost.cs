@@ -23,21 +23,23 @@ namespace Iot.Gateway.Arduino
 		#region Fields
 		private readonly IDeviceConfigurationService _deviceConfigurationService;
 		private readonly IMessageDisaptcher _messageHandler;
+		private readonly AppConfiguration _appConfiguration;
 		private readonly IMqttClient _mqttClient;
 		private readonly IMqttClientOptions _options;
 		#endregion
 		#endregion
 
 		#region .ctor
-		public MqttClientHost(IDeviceConfigurationService deviceConfigurationService, IMessageDisaptcher messageHandler)
+		public MqttClientHost(IDeviceConfigurationService deviceConfigurationService, IMessageDisaptcher messageHandler, AppConfiguration appConfiguration)
 		{
 			_deviceConfigurationService = deviceConfigurationService ??
 										  throw new ArgumentNullException(nameof(deviceConfigurationService));
 			_messageHandler = messageHandler ?? throw new ArgumentNullException(nameof(messageHandler));
+			_appConfiguration = appConfiguration ?? throw new ArgumentNullException(nameof(appConfiguration));
 			_mqttClient = new MqttFactory().CreateMqttClient();
 			_options = new MqttClientOptionsBuilder()
-					   .WithTcpServer("m24.cloudmqtt.com", 11077)
-					   .WithCredentials("atkstegm", "oYw2scrYVZD6")
+					   .WithTcpServer(_appConfiguration.MqttServerName, int.Parse(_appConfiguration.MqttServerPort))
+					   .WithCredentials(_appConfiguration.MqttUser, _appConfiguration.MqttPass)
 					   .WithKeepAlivePeriod(TimeSpan.FromSeconds(30))
 					   .WithKeepAliveSendInterval(TimeSpan.FromSeconds(15))
 					   .Build();
@@ -59,7 +61,7 @@ namespace Iot.Gateway.Arduino
 					InvalidOperationException("Соединение с брокером Mqtt не установлено. Сервис не может быть запущен.");
 			}
 
-			_logger.Trace("Соединение с брокером Mqtt установлено.");
+			_logger.Info("Соединение с брокером Mqtt установлено.");
 
 			_mqttClient.UseApplicationMessageReceivedHandler(Handler);
 
@@ -96,7 +98,7 @@ namespace Iot.Gateway.Arduino
 			foreach (var parameter in subcribeParameters)
 			{
 				await _mqttClient.SubscribeAsync(parameter);
-				_logger.Trace($"Выполнена подписка на топик: {parameter}");
+				_logger.Info($"Выполнена подписка на топик: {parameter}");
 			}
 
 		}

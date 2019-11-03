@@ -34,13 +34,13 @@ namespace Iot.Gateway.Arduino
 											})
 										.ConfigureServices((hostContext, services) =>
 											{
-												services.AddHostedService<MqttClientHost>();
 												var configuration = new AppConfiguration(hostContext.Configuration);
 												services.AddSingleton(configuration);
+												services.AddHostedService<MqttClientHost>();
 												services.AddTransient<IDeviceConfigurationService, DeviceConfigurationService>();
 												services.AddTransient<IMessageDisaptcher, MessageDispatcher.MessageDispatcher>();
 												services.AddSingleton<IConnection>(provider => new ConnectionFactory()
-																					   .CreateConnection($"{configuration.ServerName}:{configuration.ServerPort}"));
+																					   .CreateConnection($"{configuration.NatsServerName}:{configuration.NatsServerPort}"));
 												services.AddAutoMapper();
 											})
 										.Build();

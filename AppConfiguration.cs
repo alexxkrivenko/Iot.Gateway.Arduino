@@ -17,14 +17,33 @@ namespace Iot.Gateway.Arduino
 			_configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
 		}
 
-		public string ServerName
+		public string NatsServerName
 		{
 			get => _configuration["NatsSettings:Server"];
 		}
 
-		public string ServerPort
+		public string NatsServerPort
 		{
 			get => _configuration["NatsSettings:Port"];
+		}
+
+		public string MqttServerName
+		{
+			get => _configuration["MqttSettings:Server"];
+		}
+
+		public string MqttServerPort
+		{
+			get => _configuration["MqttSettings:Port"];
+		}
+		public string MqttUser
+		{
+			get => _configuration["MqttSettings:User"];
+		}
+
+		public string MqttPass
+		{
+			get => _configuration["MqttSettings:Password"];
 		}
 		#endregion
 	}
