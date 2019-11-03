@@ -15,6 +15,14 @@ Write-Host "Prepairing configuration file" -ForegroundColor Green
  Set-Content $configFile 
 (Get-Content $configFile -Raw).Replace('NATS_SERVER_PORT',$env:NATS_SERVER_PORT) | 
  Set-Content $configFile 
+ (Get-Content $configFile -Raw).Replace('MQTT_SERVER_NAME',$env:MQTT_SERVER_NAME) | 
+ Set-Content $configFile 
+  (Get-Content $configFile -Raw).Replace('MQTT_SERVER_PORT',$env:MQTT_SERVER_PORT) | 
+ Set-Content $configFile 
+  (Get-Content $configFile -Raw).Replace('MQTT_USER',$env:MQTT_USER) | 
+ Set-Content $configFile 
+  (Get-Content $configFile -Raw).Replace('MQTT_PASS',$env:MQTT_PASS) | 
+ Set-Content $configFile 
 
 # Display .Net Core version
 Write-Host "Checking .NET Core version" -ForegroundColor Green
